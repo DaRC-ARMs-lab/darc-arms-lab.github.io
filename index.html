@@ -1,424 +1,150 @@
-import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Bot,
-  Car,
-  GraduationCap,
-  Map,
-  Plane,
-  Radar,
-  Shield,
-  Users,
-  Wifi,
-} from "lucide-react";
+<!DOCTYPE html>
 
-const focusAreas = [
-  {
-    icon: Radar,
-    title: "Search and Target Tracking",
-    description:
-      "Algorithms and robotic systems for tracking, pursuit, and intelligent autonomy in dynamic environments.",
-  },
-  {
-    icon: Wifi,
-    title: "Smart Sensing Networks",
-    description:
-      "Sensor fusion, low-cost monitoring, and distributed perception systems that turn scattered signals into useful insight.",
-  },
-  {
-    icon: Map,
-    title: "Remote Dynamic Sensing",
-    description:
-      "Aerial sensing, environmental mapping, and data-rich robotic platforms for observing the world at scale.",
-  },
-  {
-    icon: Car,
-    title: "Dynamics of Complex Systems",
-    description:
-      "Modeling, estimation, and control of autonomous vehicles, drones, and high-performance robotic systems.",
-  },
-];
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DaRC-ARMS Research Lab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+    }
 
-const projects = [
-  {
-    icon: Car,
-    title: "Learning-Enhanced Physics-Aware Vehicle Dynamics",
-    lead: "Musabbir Arrafi",
-    summary:
-      "Physics-aware learning and control for enhanced autonomous navigation from vehicle dynamics.",
-  },
-  {
-    icon: ArrowRight,
-    title: "Autonomous Overtaking",
-    lead: "Malik Ali",
-    summary:
-      "Target vehicle prediction, LiDAR-based object detection, and overtaking behavior in AutoDRIVE simulation.",
-  },
-  {
-    icon: Plane,
-    title: "Energy Optimization for Quadrotor Control",
-    lead: "Kevin Johnston",
-    summary:
-      "Trajectory-driven quadrotor coordination and energy-aware control for synchronized flight.",
-  },
-  {
-    icon: Bot,
-    title: "Theory2Real",
-    lead: "Tyler Leffew",
-    summary:
-      "Taking theoretical target-tracking algorithms into mapping, navigation, and physical robotic deployment.",
-  },
-  {
-    icon: Wifi,
-    title: "Aerial WiFi Imaging",
-    lead: "Ryan Kuederle",
-    summary:
-      "Combining complex WiFi data with precision drone control for a novel 3D mapping approach.",
-  },
-  {
-    icon: Shield,
-    title: "Intelligent Motion Tracking",
-    lead: "Aung (Winston) Khaung",
-    summary:
-      "A low-cost surveillance framework using SoC devices, Raspberry Pi cameras, and sensor fusion.",
-  },
-  {
-    icon: Map,
-    title: "F1TENTH Lap Telemetry Analysis and Visualization",
-    lead: "Aaron Lovejoy",
-    summary:
-      "Telemetry framing and visualization tools for understanding autonomous racecar lap behavior.",
-  },
-  {
-    icon: Users,
-    title: "Resilient Multi-Robot Formation Control",
-    lead: "Matias Basto",
-    summary:
-      "Decentralized formation control that can detect and compensate for erroneous or malicious agent data.",
-  },
-  {
-    icon: Users,
-    title: "Visibility-Based Pursuit-Evasion",
-    lead: "Mukilan",
-    summary:
-      "Multi-robot pursuit-evasion with probabilistic evader models for cooperative environment clearing.",
-  },
-];
-
-const community = [
-  {
-    title: "Led Across Disciplines",
-    text: "Jointly led by Nicholas M. Stiffler and Krishna B. Kidambi at the University of Dayton.",
-  },
-  {
-    title: "Research + Teaching",
-    text: "The lab couples hands-on robotics research with student development, project-based learning, and mentorship.",
-  },
-  {
-    title: "Conference Presence",
-    text: "DaRC-ARMS has showcased student work and community presence at ICRA 2024 and ICRA 2025.",
-  },
-];
-
-const stats = [
-  { value: "4", label: "Core research themes" },
-  { value: "9", label: "Featured student projects" },
-  { value: "2", label: "Faculty co-leads" },
-  { value: "ICRA", label: "Active conference presence" },
-];
-
-function SectionTitle({ eyebrow, title, text }) {
-  return (
-    <div className="mx-auto mb-14 max-w-3xl text-center">
-      <div className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-cyan-300">
-        {eyebrow}
-      </div>
-      <h2 className="text-3xl font-black uppercase tracking-tight text-white md:text-5xl">
-        {title}
-      </h2>
-      {text ? <p className="mt-5 text-base leading-8 text-slate-300 md:text-lg">{text}</p> : null}
-    </div>
-  );
+```
+header {
+  padding: 20px 40px;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
 }
 
-export default function DarcArmsLabHomepage() {
-  return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <div>
-            <div className="text-lg font-black uppercase tracking-wide text-white md:text-xl">
-              DaRC-ARMS Research Lab
-            </div>
-            <div className="text-xs uppercase tracking-[0.28em] text-slate-400 md:text-sm">
-              Dayton Robotics & Control • Autonomy Robotics and Multiagent Systems
-            </div>
-          </div>
-          <nav className="hidden items-center gap-6 text-sm font-medium text-slate-300 md:flex">
-            <a href="#about" className="transition hover:text-white">About</a>
-            <a href="#focus" className="transition hover:text-white">Focus</a>
-            <a href="#projects" className="transition hover:text-white">Projects</a>
-            <a href="#community" className="transition hover:text-white">Community</a>
-            <a
-              href="#join"
-              className="rounded-full border border-cyan-400/40 px-4 py-2 text-cyan-200 transition hover:border-cyan-300 hover:bg-cyan-400/10 hover:text-white"
-            >
-              Join Us
-            </a>
-          </nav>
-        </div>
-      </header>
-
-      <main>
-        <section className="relative overflow-hidden border-b border-white/10 bg-slate-100 text-slate-950">
-          <div className="absolute inset-x-0 top-0 h-px bg-slate-900/30" />
-          <div className="mx-auto max-w-6xl px-6 pb-16 pt-14 md:pb-20 md:pt-20">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65 }}
-              className="mx-auto max-w-5xl text-center"
-            >
-              <div className="mb-5 text-xs font-semibold uppercase tracking-[0.4em] text-slate-600">
-                University of Dayton
-              </div>
-              <h1 className="text-4xl font-black uppercase leading-none tracking-tight md:text-7xl">
-                Welcome to DaRC-ARMS Research Lab
-              </h1>
-              <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-slate-700 md:text-xl">
-                The Dayton Robotics & Control, Autonomy Robotics and Multiagent Systems Lab advances robotics through
-                autonomous navigation, sensing, target tracking, dynamics, and multi-robot systems.
-              </p>
-              <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600">
-                Jointly led by Nicholas M. Stiffler and Krishna B. Kidambi, the lab brings together theory, experiments,
-                and student-built systems to push robotics into practical, real-world motion.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        <section className="relative overflow-hidden bg-[linear-gradient(135deg,#143a5a_0%,#0f5b88_45%,#0a7ea2_100%)] px-6 py-24 md:py-32">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_25%),radial-gradient(circle_at_left,rgba(34,211,238,0.12),transparent_30%)]" />
-          <div className="relative mx-auto max-w-7xl">
-            <div className="grid gap-8 md:grid-cols-[1.15fr_0.85fr] md:items-end">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="rounded-[2rem] border border-white/15 bg-white/10 p-8 shadow-2xl backdrop-blur-xl md:p-10"
-              >
-                <div className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-cyan-100">Our Research Focus</div>
-                <h2 className="text-3xl font-black uppercase tracking-tight text-white md:text-5xl">
-                  Autonomy, Sensing, and Control in the Wild
-                </h2>
-                <p className="mt-6 max-w-2xl text-base leading-8 text-slate-100/90 md:text-lg">
-                  DaRC-ARMS is dedicated to advancing autonomous path planning, navigation, control, and intelligent
-                  sensing through practical systems and real-world impact. From autonomous cars and quadrotors to pursuit,
-                  tracking, and cooperative robotic teams, the lab treats robotics like a full orchestra instead of a solo instrument.
-                </p>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  {[
-                    "Autonomous Navigation",
-                    "Tracking & Sensing",
-                    "Vehicle & Drone Control",
-                    "Multi-Robot Systems",
-                  ].map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0.97 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="grid grid-cols-2 gap-4"
-              >
-                {stats.map((stat) => (
-                  <div key={stat.label} className="rounded-[1.75rem] border border-white/15 bg-slate-950/35 p-6 backdrop-blur-md">
-                    <div className="text-3xl font-black uppercase text-white md:text-4xl">{stat.value}</div>
-                    <div className="mt-2 text-sm uppercase tracking-[0.22em] text-cyan-100/85">{stat.label}</div>
-                  </div>
-                ))}
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        <section id="about" className="bg-slate-950 px-6 py-24">
-          <div className="mx-auto max-w-7xl">
-            <SectionTitle
-              eyebrow="About the Lab"
-              title="Built Around Real Systems and Real Questions"
-              text="This homepage keeps the spirit of your reference design with a bold centered intro, a dramatic visual hero band, and floating content panels, but it tells the full DaRC-ARMS story instead of narrowing the spotlight to one project."
-            />
-
-            <div className="grid gap-6 md:grid-cols-3">
-              {community.map((item, idx) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.08 }}
-                  className="rounded-[2rem] border border-white/10 bg-slate-900 p-7 shadow-xl"
-                >
-                  <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                  <p className="mt-4 leading-7 text-slate-300">{item.text}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="focus" className="bg-slate-900 px-6 py-24">
-          <div className="mx-auto max-w-7xl">
-            <SectionTitle
-              eyebrow="Research Focus"
-              title="Four Active Research Themes"
-              text="From the lab overview: search and target tracking, smart sensing networks, remote dynamic sensing, and dynamics of complex systems."
-            />
-
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-              {focusAreas.map((area, idx) => {
-                const Icon = area.icon;
-                return (
-                  <motion.div
-                    key={area.title}
-                    initial={{ opacity: 0, y: 26 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.45, delay: idx * 0.06 }}
-                    className="rounded-[2rem] border border-white/10 bg-slate-950 p-7"
-                  >
-                    <div className="inline-flex rounded-2xl border border-cyan-400/20 bg-cyan-400/10 p-3 text-cyan-300">
-                      <Icon size={26} />
-                    </div>
-                    <h3 className="mt-5 text-xl font-bold text-white">{area.title}</h3>
-                    <p className="mt-4 leading-7 text-slate-300">{area.description}</p>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        <section id="projects" className="bg-slate-950 px-6 py-24">
-          <div className="mx-auto max-w-7xl">
-            <SectionTitle
-              eyebrow="Featured Projects"
-              title="A Lab Portfolio With Many Engines"
-              text="Autonomous vehicles, drones, tracking systems, sensing platforms, telemetry analysis, and resilient multi-robot coordination all appear in the current project slate."
-            />
-
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {projects.map((project, idx) => {
-                const Icon = project.icon;
-                return (
-                  <motion.div
-                    key={project.title}
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.45, delay: idx * 0.04 }}
-                    className="group rounded-[2rem] border border-white/10 bg-slate-900 p-7 transition hover:-translate-y-1 hover:border-cyan-400/30 hover:shadow-2xl"
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="inline-flex rounded-2xl border border-white/10 bg-slate-800 p-3 text-cyan-300">
-                        <Icon size={24} />
-                      </div>
-                      <span className="rounded-full border border-white/10 bg-slate-950 px-3 py-1 text-xs uppercase tracking-[0.24em] text-slate-400">
-                        {project.lead}
-                      </span>
-                    </div>
-                    <h3 className="mt-5 text-2xl font-bold leading-tight text-white">{project.title}</h3>
-                    <p className="mt-4 leading-7 text-slate-300">{project.summary}</p>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        <section id="community" className="bg-slate-900 px-6 py-24">
-          <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[1.1fr_0.9fr]">
-            <div className="rounded-[2rem] border border-white/10 bg-slate-950 p-8 md:p-10">
-              <div className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-cyan-300">Lab Culture</div>
-              <h2 className="text-3xl font-black uppercase tracking-tight text-white md:text-5xl">
-                Research, Conferences, and a Little Weird Friday Energy
-              </h2>
-              <p className="mt-6 text-base leading-8 text-slate-300 md:text-lg">
-                The slide deck shows more than projects. It shows a lab with conference visibility, student participation,
-                teaching energy, and personality. Great robotics labs are not just code farms with batteries. They are communities where students learn, build, travel, present, and grow.
-              </p>
-            </div>
-
-            <div className="grid gap-6">
-              <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-cyan-500/15 to-blue-500/10 p-7">
-                <div className="flex items-center gap-3 text-cyan-300">
-                  <GraduationCap size={22} />
-                  <span className="text-sm font-semibold uppercase tracking-[0.28em]">Teaching</span>
-                </div>
-                <p className="mt-4 leading-7 text-slate-200">
-                  The lab connects research to hands-on student learning and project-based mentoring.
-                </p>
-              </div>
-              <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-fuchsia-500/15 to-violet-500/10 p-7">
-                <div className="flex items-center gap-3 text-fuchsia-300">
-                  <Users size={22} />
-                  <span className="text-sm font-semibold uppercase tracking-[0.28em]">Conference Presence</span>
-                </div>
-                <p className="mt-4 leading-7 text-slate-200">
-                  Featured community moments from ICRA 2024 and ICRA 2025 make the site feel alive, not museum-glass sterile.
-                </p>
-              </div>
-              <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-500/15 to-orange-500/10 p-7">
-                <div className="flex items-center gap-3 text-amber-300">
-                  <Bot size={22} />
-                  <span className="text-sm font-semibold uppercase tracking-[0.28em]">Lab Personality</span>
-                </div>
-                <p className="mt-4 leading-7 text-slate-200">
-                  The homepage can reserve space for the fun side of the lab too, because robotics without personality feels unplugged.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="join" className="border-t border-white/10 bg-slate-950 px-6 py-24">
-          <div className="mx-auto max-w-5xl rounded-[2.25rem] border border-cyan-400/20 bg-gradient-to-r from-cyan-400/10 via-slate-900 to-violet-400/10 p-10 text-center shadow-2xl md:p-14">
-            <div className="text-xs font-semibold uppercase tracking-[0.38em] text-cyan-300">Join DaRC-ARMS</div>
-            <h2 className="mt-5 text-3xl font-black uppercase tracking-tight text-white md:text-5xl">
-              Build Robots That Think, Sense, and Move
-            </h2>
-            <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-slate-300 md:text-lg">
-              This design leaves clear room for a formal recruitment block, faculty contact details, student opportunities,
-              and a future publications section. It is built to grow with the lab instead of wobbling the moment one new project arrives.
-            </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <a
-                href="#projects"
-                className="rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-slate-950 transition hover:scale-[1.02]"
-              >
-                Explore Projects
-              </a>
-              <a
-                href="#about"
-                className="rounded-full border border-white/15 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-white/5"
-              >
-                Meet the Lab
-              </a>
-            </div>
-          </div>
-        </section>
-      </main>
-    </div>
-  );
+header h1 {
+  font-size: 18px;
+  margin: 0;
 }
+
+nav a {
+  color: #ccc;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: white;
+}
+
+.hero {
+  background: #f1f5f9;
+  color: #111;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.section {
+  padding: 80px 40px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+```
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>DaRC-ARMS Lab</h1>
+  <nav>
+    <a href="#focus">Focus</a>
+    <a href="#projects">Projects</a>
+    <a href="#join">Join</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Welcome to DaRC-ARMS Research Lab</h2>
+  <p>
+    Dayton Robotics & Control — Autonomy Robotics and Multiagent Systems
+  </p>
+  <p>
+    Jointly led by Dr. Krishna Kidambi and Dr. Nick Stiffler at the University of Dayton.
+  </p>
+</section>
+
+<section id="focus" class="section">
+  <h2>Research Focus</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Search & Target Tracking</h3>
+      <p>Tracking, pursuit, and intelligent autonomy in dynamic environments.</p>
+    </div>
+    <div class="card">
+      <h3>Smart Sensing Networks</h3>
+      <p>Sensor fusion and distributed perception systems.</p>
+    </div>
+    <div class="card">
+      <h3>Remote Dynamic Sensing</h3>
+      <p>Aerial sensing and environmental mapping.</p>
+    </div>
+    <div class="card">
+      <h3>Dynamics of Complex Systems</h3>
+      <p>Autonomous vehicles, drones, and control systems.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="section">
+  <h2>Featured Projects</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Vehicle Dynamics (Arrafi)</h3>
+      <p>Physics-aware learning for autonomous navigation.</p>
+    </div>
+    <div class="card">
+      <h3>Autonomous Overtaking</h3>
+      <p>LiDAR-based detection and motion prediction.</p>
+    </div>
+    <div class="card">
+      <h3>Quadrotor Optimization</h3>
+      <p>Energy-efficient drone control.</p>
+    </div>
+    <div class="card">
+      <h3>Multi-Robot Systems</h3>
+      <p>Formation control and cooperative autonomy.</p>
+    </div>
+  </div>
+</section>
+
+<section id="join" class="section">
+  <h2>Join Us</h2>
+  <p>
+    We are looking for students interested in robotics, control, sensing, and autonomous systems.
+  </p>
+</section>
+
+</body>
+</html>
