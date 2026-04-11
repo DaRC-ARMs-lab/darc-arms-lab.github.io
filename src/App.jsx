@@ -1,120 +1,75 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
 
+const navLinks = [
+  { href: '#about', label: 'About' },
+  { href: '#focus', label: 'Focus' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#community', label: 'Community' },
+  { href: '#join', label: 'Join Us' },
+]
+
+const focusAreas = [
+  'Autonomous Navigation',
+  'Tracking & Sensing',
+  'Vehicle & Drone Control',
+  'Multi-Robot Systems',
+]
+
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+    <main className="page-shell">
+      <header className="site-header">
+        <p className="lab-name">DaRC-ARMS Research Lab</p>
+        <p className="tagline">Dayton Robotics &amp; Control · Autonomy Robotics and Multiagent Systems</p>
+        <nav aria-label="Primary navigation">
+          <ul className="link-row">
+            {navLinks.map((link) => (
+              <li key={link.label}>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <p className="org">University of Dayton</p>
+      </header>
+
+      <section id="about" className="hero">
+        <h1>Robotics, Autonomy, Sensing, and Multiagent Systems</h1>
+        <p>
+          The DaRC-ARMS Research Lab advances robotics through autonomous navigation,
+          intelligent sensing, target tracking, vehicle dynamics, and cooperative
+          multi-robot systems.
+        </p>
+        <p>
+          Jointly led by Nicholas M. Stiffler and Krishna B. Kidambi, the lab blends
+          theory, experimentation, and student-built systems to solve practical
+          problems in motion, perception, and control.
+        </p>
+        <ul className="link-row ctas">
+          <li>
+            <a href="#projects">Explore Projects</a>
+          </li>
+          <li>
+            <a href="#join">Join the Lab</a>
+          </li>
+        </ul>
       </section>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
+      <section id="focus" className="focus">
+        <h2>Our Research Focus</h2>
+        <h3>Autonomy, Sensing, and Control in Real Environments</h3>
+        <p>
+          From autonomous vehicles and quadrotors to pursuit-evasion, distributed
+          sensing, and resilient multi-robot teams, DaRC-ARMS treats robotics like an
+          ecosystem where perception, planning, dynamics, and control must work in tune.
+        </p>
+        <ul className="pill-list">
+          {focusAreas.map((area) => (
+            <li key={area}>{area}</li>
+          ))}
+        </ul>
       </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+    </main>
   )
 }
 
