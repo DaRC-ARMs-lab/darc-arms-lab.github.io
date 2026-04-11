@@ -31,7 +31,7 @@ const publicationsData = {
     {
       text: `Kidambi, K. B., MacKunis, W., Drakunov, S. V., Golubev, V., "A Sliding Mode Estimation Method for Fluid Flow Fields Using a Differential Inclusions-based Analysis", International Journal of Control, vol. 94, no. 9, pp. 2531–2540, 2021.`,
       link: "https://doi.org/10.1080/00207179.2020.1713403",
-      pdf: "publications/sliding-mode-estimation-and-closed-loop-active-flow-control-under-actuator-uncertainty.pdf"
+    //   pdf: "publications/sliding-mode-estimation-and-closed-loop-active-flow-control-under-actuator-uncertainty.pdf"
     },
     {
       text: `Kossery Jayaprakash, A., Kidambi, K.B., MacKunis, W., Drakunov, S. V., Reyhanoglu, M., "Finite-time State Estimation for an Inverted Pendulum Under Input-multiplicative Uncertainty", Robotics, 2020; 9(4):87.`,
