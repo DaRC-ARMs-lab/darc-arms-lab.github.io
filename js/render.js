@@ -69,10 +69,11 @@ function renderProjects() {
   container.innerHTML = `
     <div class="cards">
       ${projectsData.map(project => `
-        <div class="card">
+        <a class="card project-card-link" href="projects/${project.slug}.html">
+          ${project.image ? `<img src="${project.image}" alt="${project.title}" class="project-thumb">` : ""}
           <h3>${project.title}</h3>
           <p>${project.description}</p>
-        </div>
+        </a>
       `).join("")}
     </div>
   `;
@@ -86,7 +87,18 @@ function renderPublicationList(title, items) {
     <ol>
       ${items.map(pub => `
         <li>
-          ${pub.link ? `<a href="${pub.link}" target="_blank">${pub.text}</a>` : pub.text}
+          ${pub.pdf 
+            ? `<a href="${pub.pdf}" target="_blank">${pub.text}</a>` 
+            : pub.link 
+              ? `<a href="${pub.link}" target="_blank">${pub.text}</a>` 
+              : pub.text
+          }
+
+          ${pub.link && pub.pdf ? `
+            <span style="margin-left:10px;">
+              <a href="${pub.link}" target="_blank">[pdf]</a>
+            </span>
+          ` : ""}
         </li>
       `).join("")}
     </ol>

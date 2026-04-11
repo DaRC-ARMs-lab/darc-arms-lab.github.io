@@ -259,6 +259,21 @@
       transform: translateY(-1px);
     }
 
+
+    .project-card-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .project-thumb {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+
     #projects-content .card h3,
     #equipment-content .card h3,
     #teaching-content .card h3 {
@@ -268,6 +283,7 @@
       font-size: 20px;
     }
 
+
     #projects-content .card p,
     #equipment-content .card p,
     #teaching-content .card p {
@@ -275,7 +291,17 @@
       color: #e8edf8;
       margin: 0;
     }
+    #publications-content li a:first-child {
+      font-weight: 500;
+    }
 
+    #publications-content li a:hover {
+      color: #ffffff;
+    }
+
+    #publications-content li {
+      margin-bottom: 16px;
+    }
     #publications-content h3 {
       margin: 36px 0 16px;
       font-size: 22px;

@@ -1,14 +1,20 @@
 const projectsData = [
   {
-    title: "Learning Dynamics with PINNs",
-    description: "A hybrid model that integrates physics priors with learned components"
+    title: "Physics-Integrated Neural Networks for Autonomous Navigation",
+    slug: "pinn-autonomous-navigation",
+    description: "A hybrid neural network model that integrates physics priors with learned dynamics components",
+    image: "images/projects/pinn.jpg"
   },
   {
     title: "Control Evaluation with Learned Models",
-    description: "Control algorithm performance evaluation via open-loop learned dynamic models"
+    slug: "control-evaluation-learned-models",
+    description: "Control algorithm performance evaluation via open-loop learned dynamic models",
+    image: "images/projects/cape.jpg"
   },
   {
     title: "Energy Aware Control",
-    description: "Predictive path planning for quadrotor UAVs"
+    slug: "energy-aware-control",
+    description: "Predictive path planning for quadrotor UAVs",
+    image: "images/projects/energy-aware-control.jpg"
   }
 ];
