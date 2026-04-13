@@ -14,13 +14,19 @@ function loadVideo(index) {
 
   const clip = clips[index];
 
-  videoElement.innerHTML = `
-    <source src="${clip.webm}" type="video/webm">
-    <source src="${clip.mp4}" type="video/mp4">
-  `;
+  videoElement.classList.add("fade-out");
 
-  videoElement.load();
-  videoElement.play();
+  setTimeout(() => {
+    videoElement.innerHTML = `
+      <source src="${clip.webm}" type="video/webm">
+      <source src="${clip.mp4}" type="video/mp4">
+    `;
+
+    videoElement.load();
+    videoElement.play().catch(err => console.log(err));
+
+    videoElement.classList.remove("fade-out");
+  }, 300);
 }
 
 function changeVideo(direction) {
