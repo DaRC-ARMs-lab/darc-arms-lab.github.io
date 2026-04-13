@@ -2,7 +2,7 @@ from moviepy import VideoFileClip
 import os
 
 # ===== CONFIG =====
-input_video = "videos\\26Spring - DaRC ARMS (One Slide Project Overviews).mp4"   # your video file
+input_video = "videos\\26Spring - DaRC ARMS (One Slide Project Overviews).mp4"
 output_dir = "videos/clips"
 clip_duration = 10  # seconds
 # ==================
@@ -23,15 +23,28 @@ for start in range(0, video_duration, clip_duration):
 
     clip = video.subclipped(start, end)
 
-    output_path = os.path.join(output_dir, f"clip_{clip_index:02d}.mp4")
+    base_name = f"clip_{clip_index:02d}"
 
-    print(f"Exporting {output_path} ({start}s → {end}s)")
+    mp4_path = os.path.join(output_dir, f"{base_name}.mp4")
+    webm_path = os.path.join(output_dir, f"{base_name}.webm")
 
+    print(f"Exporting {base_name} ({start}s → {end}s)")
+
+    # ===== MP4 =====
     clip.write_videofile(
-        output_path,
+        mp4_path,
         codec="libx264",
         audio_codec="aac",
         fps=24
+    )
+
+    # ===== WEBM =====
+    clip.write_videofile(
+        webm_path,
+        codec="libvpx-vp9",
+        audio=False,      # better for web autoplay
+        fps=24,
+        bitrate="1M"
     )
 
     clip_index += 1
