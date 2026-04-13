@@ -105,43 +105,106 @@
       color: #e7edf8;
     }
 
-    .video-section {
-      background: #dfe4eb;
-      color: #101827;
-      padding: 80px 40px;
-    }
+.video-section p {
+  color: #e8edf8;
+  font-size: 18px;
+  line-height: 1.7;
+  opacity: 0.95;
+}
 
-    .video-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      text-align: center;
-    }
+.video-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
 
-    .video-container h2 {
-      font-size: 34px;
-      margin-bottom: 16px;
-    }
 
-    .video-container p {
-      max-width: 820px;
-      margin: 0 auto 28px;
-      font-size: 18px;
-      line-height: 1.7;
-      color: #273246;
-    }
+.video-container h2 {
+  margin-bottom: 16px;
+  font-size: 34px;
+}
 
-    .video-wrapper {
-      border-radius: 18px;
-      overflow: hidden;
-      background: black;
-      box-shadow: 0 16px 36px rgba(0,0,0,0.25);
-    }
+/* .video-container p {
+  max-width: 800px;
+  margin: 0 auto 28px auto;
+  line-height: 1.7;
+  font-size: 18px;
+  color: #273246;
+} */
 
-    .video-wrapper video {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
+.video-container p {
+  color: #d6e4ff;
+  opacity: 0.95;
+  max-width: 800px;
+  margin: 0 auto 28px;
+}
+
+.video-slider {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.video-wrapper {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  background: black;
+}
+
+.video-wrapper video {
+  width: 100%;
+  display: block;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(7, 18, 43, 0.78);
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.slider-btn:hover {
+  background: rgba(7, 18, 43, 0.95);
+}
+
+.slider-btn.prev {
+  left: -18px;
+}
+
+.slider-btn.next {
+  right: -18px;
+}
+
+@media (max-width: 768px) {
+  .video-section {
+    padding: 60px 20px;
+  }
+
+  .slider-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 22px;
+  }
+
+  .slider-btn.prev {
+    left: 8px;
+  }
+
+  .slider-btn.next {
+    right: 8px;
+  }
+}
+
 
     .section {
       padding: 100px 40px;
@@ -422,7 +485,30 @@
     </div>
   </section>
 
+
   <section class="video-section">
+    <div class="video-container">
+      <h2>Lab in Action</h2>
+      <p>
+        Research at DaRC-ARMS spans autonomous navigation, sensing, tracking, control,
+        and multi-agent systems.
+      </p>
+
+      <div class="video-slider">
+        <button class="slider-btn prev" onclick="changeVideo(-1)">&#10094;</button>
+
+        <div class="video-wrapper">
+          <video class="slide-video" autoplay muted playsinline></video>
+        </div>
+
+        <button class="slider-btn next" onclick="changeVideo(1)">&#10095;</button>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- <section class="video-section">
     <div class="video-container">
       <h2>Lab in Action</h2>
       <p>
@@ -436,7 +522,7 @@
         </video>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <section id="people" class="section">
     <h2 class="section-title">People</h2>
@@ -496,9 +582,12 @@
     © 2026 DaRC-ARMS Research Lab • University of Dayton
   </footer>
 
+<script src="js/video-slider.js"></script>
+<!-- <script src="js/video-slider.js?v=2"></script> -->
 <script src="js/people.js?v=2"></script>
 <script src="js/projects.js?v=2"></script>
 <script src="js/publications.js?v=2"></script>
 <script src="js/render.js?v=2"></script>
+
 </body>
 </html>
