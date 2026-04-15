@@ -472,12 +472,31 @@
         height: 84px;
       }
     }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      font-size: 20px;
+      color: white;
+    }
+
+    .logo-img {
+      height: 40px;
+      filter: drop-shadow(0 0 4px rgba(255,255,255,0.2));
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>DaRC-ARMS Lab</h1>
+    <!-- <h1>DaRC-ARMS Lab</h1> -->
+    <div class="logo">
+      <a href="https://darc-arms.com/">
+        <img src="images/darc-arms-logo.png" class="logo-img">
+      </a>
+      <span>DaRC-ARMS Lab</span>
+    </div>
     <nav>
       <a href="#people">People</a>
       <a href="#projects">Projects</a>
