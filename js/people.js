@@ -27,7 +27,7 @@ const peopleData = {
       name: "Musabbir A. Arrafi",
       role: "MS - Mechanical Engineering",
       interests: "Autonomous Navigation, Robotics and Physics-Based Control",
-      image: "images/arrafi.png",
+      image: "images/arrafi2.jpg",
       website: "https://musabbir-arrafi.me/",
       scholar: "https://scholar.google.com/citations?user=XzXrvOcAAAAJ&hl=en",
       email: "mailto:arrafim1@udayton.edu",
@@ -71,7 +71,7 @@ const peopleData = {
     },
 
     {
-      name: "Aung Myat Khaung",
+      name: "Aung M. Khaung",
       role: "Undergraduate",
       interests: "Multi-sensor fusion, multi-agent systems, robotics perception",
       image: "images/myat.jpg",
@@ -101,17 +101,18 @@ const peopleData = {
       scholar: "",
       email: "hobed1@udayton.edu",
       linkedin: ""
-    },
-    {
-      name: "Student 4",
-      role: "Undergraduate",
-      interests: "",
-      image: "images/default.jpg",
-      website: "#",
-      scholar: "",
-      email: "",
-      linkedin: ""
     }
+    // ,
+    // {
+    //   name: "Student 4",
+    //   role: "Undergraduate",
+    //   interests: "",
+    //   image: "images/default.jpg",
+    //   website: "#",
+    //   scholar: "",
+    //   email: "",
+    //   linkedin: ""
+    // }
 
 
 
