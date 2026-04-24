@@ -59,6 +59,18 @@ const peopleData = {
 
   undergraduateStudents: [
     {
+      name: "Tyler Leffew",
+      role: "Undergraduate",
+      interests: "Multi-sensor fusion, multi-agent systems, robotics perception",
+      image: "images/tyler.jpg",
+      website: "#",
+      scholar: "",
+      email: "leffewt2@udayton.edu",
+      linkedin: "",
+      github: "https://github.com/tylerLeffew"
+    },
+
+    {
       name: "Aung Myat Khaung",
       role: "Undergraduate",
       interests: "Multi-sensor fusion, multi-agent systems, robotics perception",
