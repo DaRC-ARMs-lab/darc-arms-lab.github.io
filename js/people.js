@@ -37,54 +37,57 @@ const peopleData = {
     {
       name: "Malik Ali",
       role: "MS - Electrical and Computer Engineering",
-      interests: "Autonomous Overtaking, Robotics",
+      interests: "Autonomous Overtaking, Robotics and Control",
       image: "images/malik.jpg",
       website: "#",
       scholar: "",
-      email: "",
-      linkedin: ""
+      email: "alim37@udayton.edu",
+      linkedin: "https://www.linkedin.com/in/malikaliee/",
+      github: "https://github.com/alim37"
     },
     {
       name: "Kevin Johnston",
       role: "MS - Mechanical Engineering",
-      interests: "Energy Aware Control, UAV",
+      interests: "Autonomous aerial robotics, nonlinear control, Energy-aware flight systems",
       image: "images/kevin.jpg",
       website: "#",
       scholar: "",
-      email: "",
-      linkedin: ""
+      email: "johnstonk9@udayton.edu",
+      linkedin: "https://www.linkedin.com/in/johnston-kevin/"
     }
   ],
 
   undergraduateStudents: [
     {
-      name: "Student 1",
+      name: "Aung Myat Khaung",
       role: "Undergraduate",
-      interests: "",
-      image: "images/default.jpg",
+      interests: "Multi-sensor fusion, multi-agent systems, robotics perception",
+      image: "images/myat.jpg",
       website: "#",
       scholar: "",
-      email: "",
-      linkedin: ""
+      email: "khaunga1@udayton.edu",
+      linkedin: "www.linkedin.com/in/aung-myat-khaung-winston",
+      github: "https://github.com/Aung-Myat-Khaung"
     },
     {
-      name: "Student 2",
+      name: "Matias Basto",
       role: "Undergraduate",
-      interests: "",
-      image: "images/default.jpg",
+      interests: "Swarm Robotics",
+      image: "images/matias.jpg",
       website: "#",
       scholar: "",
-      email: "",
-      linkedin: ""
+      email: "bastom1@udayton.edu",
+      linkedin: "https://www.linkedin.com/in/matias-basto/",
+      github: "https://github.com/bastom1-cpsUD"
     },
     {
-      name: "Student 3",
+      name: "Dillan Hobe",
       role: "Undergraduate",
       interests: "",
-      image: "images/default.jpg",
+      image: "images/hobe.jpg",
       website: "#",
       scholar: "",
-      email: "",
+      email: "hobed1@udayton.edu",
       linkedin: ""
     },
     {
