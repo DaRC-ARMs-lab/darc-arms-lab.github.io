@@ -92,16 +92,16 @@ const peopleData = {
       linkedin: "https://www.linkedin.com/in/matias-basto/",
       github: "https://github.com/bastom1-cpsUD"
     },
-    {
-      name: "Dillan Hobe",
-      role: "Undergraduate",
-      interests: "",
-      image: "images/hobe.jpg",
-      website: "#",
-      scholar: "",
-      email: "hobed1@udayton.edu",
-      linkedin: ""
-    }
+    // {
+    //   name: "Dillan Hobe",
+    //   role: "Undergraduate",
+    //   interests: "",
+    //   image: "images/hobe.jpg",
+    //   website: "#",
+    //   scholar: "",
+    //   email: "hobed1@udayton.edu",
+    //   linkedin: ""
+    // }
     // ,
     // {
     //   name: "Student 4",
