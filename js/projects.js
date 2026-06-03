@@ -10,6 +10,16 @@ const projectsData = [
     },
 
     {
+    title: "CAPE: Control Algorithm Performance Evaluation under Learned Vehicle Dynamics Models",
+    slug: "cape-control-algorithm-performance-evaluation",
+    description: "A benchmarking framework for evaluating control algorithms using learned vehicle dynamics models",
+    image: "videos/cape figures/fig1.png",
+    people: ["Malik Ali", "Musabbir A. Arrafi", "Dr. Krishna B. Kidambi (Advisor)", "Dr. Niki Stiffler (Advisor)"],
+    tags: ["Control Evaluation", "Learned Dynamics", "Autonomous Vehicles"],
+    paper: "#"
+    },
+
+    {
     title: "Autonomous Overtaking via Predictive Control and Learned Vehicle Dynamics",
     slug: "autonomous-overtaking",
     description: "Safe and efficient overtaking in dynamic environments using learning-enhanced vehicle dynamics and predictive control",

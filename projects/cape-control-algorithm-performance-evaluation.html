@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CAPE: Control Algorithm Performance Evaluation</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #081533;
+      color: white;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 24px;
+    }
+
+    a {
+      color: #9ecbff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: white;
+    }
+
+    h1 {
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    .lede {
+      max-width: 880px;
+      font-size: 1.08rem;
+      color: #d7e6ff;
+    }
+
+    .section {
+      margin-top: 44px;
+    }
+
+    .full-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 16px;
+      margin: 24px 0 10px;
+      background: white;
+    }
+
+    .video-wrapper {
+      margin: 24px 0 10px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      background: #020817;
+    }
+
+    .video-wrapper video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .caption {
+      margin: 0 0 24px;
+      color: #b8c8e6;
+      font-size: 0.95rem;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin: 22px 0 8px;
+    }
+
+    .metric {
+      border-left: 3px solid #9ecbff;
+      padding: 4px 0 4px 14px;
+      color: #dceaff;
+    }
+
+    .metric strong {
+      display: block;
+      color: white;
+      font-size: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p><a href="../index.html#projects">&larr; Back to Projects</a></p>
+    <h1>CAPE: Control Algorithm Performance Evaluation under Learned Vehicle Dynamics Models</h1>
+    <p class="lede">
+      CAPE is a systematic closed-loop benchmarking framework for studying how learned vehicle
+      dynamics models affect autonomous racing controller performance. The framework evaluates
+      heterogeneous controllers under identical settings while injecting realistic uncertainty into
+      sensing, actuation, vehicle parameters, and process dynamics.
+    </p>
+
+    <div class="section">
+      <h2>Benchmarking Architecture</h2>
+      <p>
+        CAPE evaluates five controllers, <b>PID, RISE, Nominal NMPC, Robust NMPC, and Adaptive NMPC</b>,
+        across three learned vehicle dynamics models: the Deep Pacejka Model (DPM), Deep Dynamics Model
+        (DDM), and the proposed Enhanced Physics Model (EPM).
+        EPM was developed as part of our
+        <a href="pinn-autonomous-navigation.html">Physics-Integrated Neural Networks for Autonomous Navigation</a>
+        project and is used here to study how improved learned dynamics translate into controller
+        robustness and lap performance.
+      </p>
+
+      <img src="../videos/cape%20figures/fig1.png" alt="CAPE closed-loop benchmarking architecture" class="full-image">
+      <p class="caption">
+        CAPE closed-loop benchmarking architecture with controller, learned dynamics, disturbance,
+        sensor uncertainty, measured state feedback, and parametric uncertainty blocks.
+      </p>
+
+      <p>
+        The uncertainty pipeline introduces model mismatch through vehicle mass, tire stiffness,
+        and friction variations, while actuator delay, process disturbances, and crosswind
+        perturbations stress the closed-loop response. Sensor uncertainty is modeled through additive Gaussian measurement
+        noise and IMU bias drift, allowing the same controller-model pair to be evaluated from clean
+        operation through progressively noisier conditions.
+      </p>
+
+      <!-- <p>
+        DPM serves as a learned tire-force baseline, DDM represents a deeper data-driven dynamics
+        model, and EPM combines learned dynamics with a physics-informed vehicle representation.
+        CAPE compares these models not only by prediction quality, but by their effect on the
+        controller's closed-loop trajectory tracking, lap completion, and robustness under uncertainty.
+      </p> -->
+    </div>
+
+    <div class="section">
+      <h2>Clean Closed-Loop Evaluation</h2>
+      <p>
+        In the clean benchmark, all controller-model pairs are evaluated with identical controller
+        settings and constraints, without noise or uncertainty.
+        The trajectory, longitudinal tracking error, and lateral tracking error reveal how model
+        fidelity influences controller behavior even before disturbances are introduced.
+      </p>
+
+      <div class="video-wrapper">
+        <video autoplay muted loop playsinline controls>
+          <source src="../videos/cape%20figures/CL1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <p class="caption">
+        Clean closed-loop trajectory tracking for DPM, DDM, and EPM across PID, RISE, Nominal NMPC,
+        Robust NMPC, and Adaptive NMPC.
+      </p>
+
+      <img src="../videos/cape%20figures/fig3.png" alt="Closed-loop state and control responses for CAPE controllers" class="full-image">
+      <p class="caption">
+        Closed-loop velocity, yaw-rate, throttle, and steering responses for each controller across
+        DPM, DDM, and EPM.
+      </p>
+
+      <p>
+        Under clean conditions, EPM-based controller rollouts follow the raceline more closely and
+        maintain smaller longitudinal and lateral error magnitudes. The response plots show how this
+        improved tracking appears across both vehicle states and control commands.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Uncertainty and Noise Robustness</h2>
+      <p>
+        CAPE sweeps a global noise factor from &eta; = 0 to &eta; = 5 in increments of 0.5. This sweep
+        progressively increases sensing, actuation, process, and parametric uncertainties, exposing
+        which controller-model combinations remain stable as model mismatch grows. Failed laps are
+        handled with a bounded tracking-error penalty and a success-rate penalized lap-completion
+        time, so unstable controller-model combinations are reflected in the aggregate results.
+      </p>
+
+      <img src="../videos/cape%20figures/fig4.png" alt="CAPE aggregate tracking errors and penalized lap completion times" class="full-image">
+      <p class="caption">
+        Aggregate mean longitudinal and lateral tracking errors, plus success-rate penalized lap
+        completion times, across model-controller combinations.
+      </p>
+
+      <div class="metrics">
+        <div class="metric">
+          <strong>5.82 s</strong>
+          EPM with Adaptive NMPC penalized lap time.
+        </div>
+        <div class="metric">
+          <strong>8.80 s</strong>
+          DDM with Adaptive NMPC penalized lap time.
+        </div>
+        <div class="metric">
+          <strong>12.99 s</strong>
+          DPM with Adaptive NMPC penalized lap time.
+        </div>
+      </div>
+
+      <p>
+        EPM achieves the lowest aggregate longitudinal and lateral tracking errors across the
+        uncertainty sweep. Its advantage is most pronounced for NMPC-based controllers, where model
+        prediction accuracy directly shapes the planned trajectory and control inputs. PID and RISE
+        show less separation between learned models because they do not explicitly optimize over a
+        prediction model, but the EPM pairing still improves robustness in the broader benchmark.
+        At &eta; = 1, EPM reduces average longitudinal tracking error by 29.0 percent and 17.2 percent,
+        and lateral tracking error by 24.6 percent and 12.3 percent relative to DPM and DDM,
+        respectively.
+      </p>
+
+      <div class="video-wrapper">
+        <video autoplay muted loop playsinline controls>
+          <source src="../videos/cape%20figures/CL2.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <p class="caption">
+        Noisy closed-loop trajectory tracking with global noise factor &eta; = 1.
+      </p>
+
+      <img src="../videos/cape%20figures/fig5.png" alt="Temporal tracking errors under increasing uncertainty" class="full-image">
+      <p class="caption">
+        Temporal longitudinal and lateral tracking error evolution across all controllers and learned
+        dynamics models during the uncertainty sweep.
+      </p>
+
+      <p>
+        As uncertainty increases, DPM and DDM accumulate larger transient deviations, oscillatory
+        tracking behavior, and more failed runs. Across all evaluations, DPM fails 31 times, DDM
+        fails 27 times, and EPM fails 12 times. For NMPC-based controllers only, EPM completes all
+        33 evaluations with zero failures, while DPM and DDM fail 19 and 12 times respectively.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>MPC Model Ablation</h2>
+      <p>
+        The MPC ablation study separates the effect of the internal model used by the controller
+        optimizer from the learned dynamics model used for closed-loop propagation. Solid trajectories
+        keep the internal controller model fixed as EPM while varying the learned dynamics model,
+        while dashed trajectories vary the internal model while keeping EPM as the learned dynamics
+        model.
+      </p>
+
+      <img src="../videos/cape%20figures/fig6.png" alt="MPC internal model and learned dynamics ablation study" class="full-image">
+      <p class="caption">
+        MPC ablation study showing raceline adherence, lap completion, and track violations for
+        matched and mismatched internal-controller and learned-dynamics model combinations.
+      </p>
+
+      <p>
+        The matched EPM controller and EPM learned dynamics configuration produces the closest
+        raceline adherence and the fastest successful lap completion. Mismatched model combinations
+        lead to larger tracking deviations and track-boundary violations, especially in high-curvature
+        sections, highlighting the importance of model fidelity inside both controller planning and
+        closed-loop propagation.
+      </p>
+    </div>
+  </div>
+</body>
+</html>
