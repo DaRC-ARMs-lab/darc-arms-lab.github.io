@@ -114,6 +114,26 @@ function renderPublications() {
   `;
 }
 
+function renderTeaching() {
+  const container = document.getElementById("teaching-content");
+
+  if (!container || typeof teachingData === "undefined") return;
+
+  container.innerHTML = `
+    ${teachingData.map(group => `
+      <h3 class="group-title">${group.instructor}</h3>
+      <div class="cards">
+        ${group.courses.map(course => `
+          <div class="card">
+            <h3>${course}</h3>
+          </div>
+        `).join("")}
+      </div>
+    `).join("")}
+  `;
+}
+
 renderPeople();
 renderProjects();
 renderPublications();
+renderTeaching();
