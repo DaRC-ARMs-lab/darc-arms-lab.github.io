@@ -2,8 +2,8 @@ const publicationsData = {
   underReview: [
     {
       text: `Arrafi, M.A., Ali, M., Stiffler, N., Kidambi, K.B., "LE-PAVD: Learning Enhanced Physics-Aware Vehicle Dynamics for High-Speed Autonomous Navigation", Revision under review, IEEE Robotics & Automation Letters, February 2026.`,
-      link: "https://darc-arms-lab.github.io/lepavd-results/",
-    //   pdf: "publications/le-pavd-learning-enhanced-physics-aware-vehicle-dynamics-for-high-speed-autonomous-navigation.pdf"
+      // link: "https://darc-arms-lab.github.io/lepavd-results/",
+      pdf: "publications/26_LEPAVD.pdf"
 
     },
     {
