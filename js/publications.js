@@ -9,8 +9,8 @@ const publicationsData = {
     },
     {
       text: `Ali, M., Arrafi, M.A., Stiffler, N., Kidambi, K.B., "CAPE: Control Algorithm Performance Evaluation under Learned Vehicle Dynamics Models", under review, IEEE Transactions on Intelligent Vehicles (T-IV), June 2026.`,
-    //   pdf: "publications/cape-control-algorithm-performance-evaluation-via-open-loop-learned-dynamic-models.pdf"
-    }
+      link: "https://arxiv.org/pdf/2606.05480",
+      pdf: "publications/26_CAPE_arxiv.pdf"
   ],
 
   journals: [
